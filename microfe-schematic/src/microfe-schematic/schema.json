@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SetupMFESchema",
+  "title": "Setup MFE Options",
+  "type": "object",
+  "properties": {
+    "projectName": {
+      "type": "string",
+      "description": "Tên project Angular (remote hoặc host)",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "type": {
+      "type": "string",
+      "enum": ["host", "remote"],
+      "description": "Kiểu microfrontend",
+      "default": "remote",
+      "x-prompt": {
+        "message": "Bạn muốn tạo kiểu gì?",
+        "type": "list",
+        "items": [
+          { "value": "host", "label": "Host" },
+          { "value": "remote", "label": "Remote" }
+        ]
+      }
+    }
+  },
+  "required": ["projectName"]
+}

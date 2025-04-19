@@ -1,0 +1,10 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "microfe-schematic": {
+      "description": "A blank schematic.",
+      "factory": "./microfe-schematic/index#microfeSchematic",
+      "schema": "./microfe-schematic/schema.json"
+    }
+  }
+}

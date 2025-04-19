@@ -1,0 +1,28 @@
+// webpack.config.js.template
+
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+
+module.exports = {
+  output: {
+    // uniqueName dùng để tránh xung đột runtime khi có nhiều remote
+    uniqueName: "<%= projectName %>",
+    publicPath: "auto"
+  },
+  optimization: {
+    runtimeChunk: false
+  },
+  plugins: [
+    new ModuleFederationPlugin({
+      // name của remote hoặc host
+      name: "<%= projectName %>",
+      filename: "remoteEntry.js",
+
+      // expose module cho app khác dùng
+      exposes: {
+        './Module': './src/app/remote-entry/entry.module.ts',
+      },
+
+      // có thể thêm shared hoặc remotes ở đây nếu muốn
+    })
+  ]
+};
